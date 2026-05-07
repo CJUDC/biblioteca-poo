@@ -22,7 +22,6 @@ public class Usuario {
 
     //Setters
 
-
     public void setName(String name) {
         this.name = name;
     }
