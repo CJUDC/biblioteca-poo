@@ -33,6 +33,8 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Registra usuario");
+                    var bibi = new Biblioteca();
+                    bibi.addUser(new Usuario());
                     pausar(scanner);
                     break;
                 case 3:
