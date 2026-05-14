@@ -5,11 +5,11 @@ public class Usuario {
     private String password;
 
     //Constructor
-    public Usuario(String name, String userName, String password){
-        this.setName(name);
-        this.setUserName(userName);
-        this.setPassword(password);
-    }
+//    public Usuario(String name, String userName, String password){
+//        this.setName(name);
+//        this.setUserName(userName);
+//        this.setPassword(password);
+//    }
 
     //Métodos
 
@@ -20,7 +20,7 @@ public class Usuario {
     }
 
     public String getUserName(){
-        return name;
+        return userName;
     }
 
     public String getPassword() {
