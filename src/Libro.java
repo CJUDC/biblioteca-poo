@@ -5,10 +5,10 @@ public class Libro {
     //Atributos
     private String title;
     private String author;
-    public Date realeaseDate;
+    public String realeaseDate;
 
     //Constructor
-    public Libro(String title, String author, Date realeaseDate){
+    public Libro(String title, String author, String realeaseDate){
         this.setTitle(title);
         this.setAuthor(author);
         this.realeaseDate = realeaseDate;
