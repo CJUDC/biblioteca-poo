@@ -4,6 +4,13 @@ public class Usuario {
     private String userName;
     private String password;
 
+    //Constructor
+    public Usuario(String name, String userName, String password){
+        this.setName(name);
+        this.setUserName(userName);
+        this.setPassword(password);
+    }
+
     //Métodos
 
     //Getters
