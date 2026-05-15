@@ -8,6 +8,7 @@ public class Main {
         var scanner = new Scanner(System.in);
         int opc;
 
+        var bibi = new Biblioteca();
 
 
         do{
@@ -33,7 +34,6 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Registra usuario");
-                    var bibi = new Biblioteca();
                     bibi.addUser();
                     pausar(scanner);
                     break;
@@ -51,6 +51,7 @@ public class Main {
                     break;
                 case 6:
                     System.out.println("Logica Ver Usuario");
+                    bibi.displayUser();
                     pausar(scanner);
                     break;
                 case 7:

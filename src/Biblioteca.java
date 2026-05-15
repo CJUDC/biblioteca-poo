@@ -6,10 +6,10 @@ public class Biblioteca {
     Libro libro = new Libro("principito", "Antoine de Saint-Exupéry", "04-01-1943");
     //Usuario usuario = new Usuario("carlos", "cjcm", "skrillex");
     Random random = new Random();
+    ArrayList<Usuario> usuarios = new ArrayList<>();
 
 
     public void addUser(){
-        ArrayList<Usuario> usuarios = new ArrayList<>();
         var usuario = new Usuario();
 
         Scanner sc = new Scanner(System.in);
@@ -28,7 +28,11 @@ public class Biblioteca {
         usuarios.add(usuario);
     }
 
-    
+    public void displayUser(){
+        for (Usuario usuario : usuarios){
+            System.out.println("Hola " + usuario.getName() + " tu username es " + usuario.getUserName() + " y tu id es " + usuario.getUserID());
+        }
+    }
 
 
 
