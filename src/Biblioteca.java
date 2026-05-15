@@ -1,11 +1,13 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Biblioteca {
     Libro libro = new Libro("principito", "Antoine de Saint-Exupéry", "04-01-1943");
     //Usuario usuario = new Usuario("carlos", "cjcm", "skrillex");
+    Random random = new Random();
 
-
+    ArrayList<Usuario> usuarios = new ArrayList<>();
 
     public void addUser(Usuario usuario){
         Scanner sc = new Scanner(System.in);
@@ -17,7 +19,11 @@ public class Biblioteca {
 
         System.out.println("Ingrese su contraseña: ");
         usuario.setPassword(sc.nextLine());
+
+        usuario.setUserID(random.nextInt());
     }
+
+
 
 
 }
