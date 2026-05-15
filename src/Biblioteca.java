@@ -7,12 +7,15 @@ public class Biblioteca {
     //Usuario usuario = new Usuario("carlos", "cjcm", "skrillex");
     Random random = new Random();
 
-    ArrayList<Usuario> usuarios = new ArrayList<>();
 
-    public void addUser(Usuario usuario){
+    public void addUser(){
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        var usuario = new Usuario();
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese su nombre: ");
         usuario.setName(sc.nextLine());
+
 
         System.out.println("Ingrese su nombre de usuario: ");
         usuario.setUserName(sc.nextLine());
@@ -21,7 +24,11 @@ public class Biblioteca {
         usuario.setPassword(sc.nextLine());
 
         usuario.setUserID(random.nextInt());
+
+        usuarios.add(usuario);
     }
+
+    
 
 
 

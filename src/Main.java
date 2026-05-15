@@ -34,7 +34,7 @@ public class Main {
                 case 2:
                     System.out.println("Registra usuario");
                     var bibi = new Biblioteca();
-                    bibi.addUser(new Usuario());
+                    bibi.addUser();
                     pausar(scanner);
                     break;
                 case 3:
