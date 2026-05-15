@@ -48,6 +48,7 @@ public class Main {
                     break;
                 case 5:
                     System.out.println("Logica Ver libro");
+                    bibi.displayBook();
                     pausar(scanner);
                     break;
                 case 6:
