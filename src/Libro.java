@@ -6,6 +6,7 @@ public class Libro {
     private String title;
     private String author;
     public String realeaseDate;
+    private int stock;
 
     //Constructor
     public Libro(String title, String author, String realeaseDate){
@@ -25,6 +26,10 @@ public class Libro {
         return  this.author;
     }
 
+    public int getStock() {
+        return stock;
+    }
+
     //Setters
     public void setTitle(String title){
         this.title = title;
@@ -32,5 +37,9 @@ public class Libro {
 
     public void setAuthor(String author){
         this.author = author;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }
