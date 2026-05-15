@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -7,7 +8,7 @@ public class Biblioteca {
     //Usuario usuario = new Usuario("carlos", "cjcm", "skrillex");
     //Atributos
     public String name;
-    public ArrayList<Libro> libros;
+    public ArrayList<Libro> libros = new ArrayList<>();
 
 
     Random random = new Random();
@@ -39,6 +40,23 @@ public class Biblioteca {
         }
     }
 
+    public void addBook(){
+        var libro = new Libro("kaka", "jonas", "04/01/2000", 10);
+        Scanner sc = new Scanner(System.in);
 
+        System.out.println("Ingrese el nombre del libro: ");
+        libro.setTitle(sc.nextLine());
+
+        System.out.println("Ingrese el autor del libro: ");
+        libro.setAuthor(sc.nextLine());
+
+        System.out.println("Ingrese la fecha de publicación del libro: ");
+        libro.realeaseDate = sc.nextLine();
+
+        System.out.println("Ingrese el stock disponible del libro: ");
+        libro.setStock(sc.nextInt());
+
+        libros.add(libro);
+    }
 
 }

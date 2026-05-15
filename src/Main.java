@@ -30,6 +30,7 @@ public class Main {
             switch (opc){
                 case 1:
                     System.out.println("Registra Libros");
+                    bibi.addBook();
                     pausar(scanner);
                     break;
                 case 2:

@@ -10,10 +10,11 @@ public class Libro {
     private int stock;
 
     //Constructor
-    public Libro(String title, String author, String realeaseDate){
+    public Libro(String title, String author, String realeaseDate, int stock){
         this.setTitle(title);
         this.setAuthor(author);
         this.realeaseDate = realeaseDate;
+        this.setStock(stock);
     }
 
     //Métodos
