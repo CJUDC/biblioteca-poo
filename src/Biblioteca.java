@@ -55,8 +55,25 @@ public class Biblioteca {
 
         System.out.println("Ingrese el stock disponible del libro: ");
         libro.setStock(sc.nextInt());
+        sc.nextLine();
 
         libros.add(libro);
+
+        System.out.println("Libro registrado exitosamente!");
+    }
+
+    public void displayBook() {
+        if (libros.isEmpty()) {
+            System.out.println("No hay libros registrados en la biblioteca.");
+            return;
+        }
+        System.out.println("--- Lista de Libros ---");
+        for (Libro libro : libros) {
+            System.out.println("Título: " + libro.getTitle() +
+                    " | Autor: " + libro.getAuthor() +
+                    " | Fecha: " + libro.realeaseDate +
+                    " | Stock: " + libro.getStock());
+        }
     }
 
 }
