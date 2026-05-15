@@ -3,8 +3,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Biblioteca {
-    Libro libro = new Libro("principito", "Antoine de Saint-Exupéry", "04-01-1943");
+    //Libro libro = new Libro("principito", "Antoine de Saint-Exupéry", "04-01-1943");
     //Usuario usuario = new Usuario("carlos", "cjcm", "skrillex");
+    //Atributos
+    public String name;
+    public ArrayList<Libro> libros;
+
+
     Random random = new Random();
     ArrayList<Usuario> usuarios = new ArrayList<>();
 
@@ -33,7 +38,6 @@ public class Biblioteca {
             System.out.println("Hola " + usuario.getName() + " tu username es " + usuario.getUserName() + " y tu id es " + usuario.getUserID());
         }
     }
-
 
 
 
