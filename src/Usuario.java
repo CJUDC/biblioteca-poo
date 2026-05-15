@@ -3,6 +3,7 @@ public class Usuario {
     private String name;
     private String userName;
     private String password;
+    private int userID;
 
     //Constructor
 //    public Usuario(String name, String userName, String password){
@@ -27,6 +28,10 @@ public class Usuario {
         return password;
     }
 
+    public int getUserID() {
+        return userID;
+    }
+
     //Setters
 
     public void setName(String name) {
@@ -39,5 +44,9 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 }
