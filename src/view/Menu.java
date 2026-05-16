@@ -1,10 +1,13 @@
 package view;
 
+import controller.Biblioteca;
+
 import java.util.Scanner;
 
 public class Menu {
 
-    //Main menú
+    Biblioteca biblioteca = new Biblioteca();
+
     Scanner scanner = new Scanner(System.in);
     int opc;
 
@@ -51,7 +54,7 @@ public class Menu {
     public void iniciarGestionLibros(){
         do {
             System.out.println("===== Gestión de Libros =====");
-            System.out.println("1. Registrar Libro");
+            System.out.println("1. Registrar model.Libro");
             System.out.println("2. Ver todos los libros");
             System.out.println("3. Buscar libro por ISBN");
             System.out.println("4. Buscar libro por título");
@@ -97,10 +100,10 @@ public class Menu {
     public void iniciarGestionUsuarios(){
         do {
             System.out.println("===== GESTIÓN DE USUARIOS =====");
-            System.out.println("1. Registrar Usuario");
+            System.out.println("1. Registrar model.Usuario");
             System.out.println("2. Ver usuarios");
-            System.out.println("3. Buscar Usuario por ID");
-            System.out.println("4. Eliminar Usuario");
+            System.out.println("3. Buscar model.Usuario por ID");
+            System.out.println("4. Eliminar model.Usuario");
             System.out.println("0. Volver");
 
             System.out.println("\nElija una opción:");
@@ -139,8 +142,8 @@ public class Menu {
     public void iniciarGestionPrestamos(){
         do {
             System.out.println("===== GESTIÓN DE PRÉSTAMOS =====");
-            System.out.println("1. Prestar Libro");
-            System.out.println("2. Devolver Libro");
+            System.out.println("1. Prestar model.Libro");
+            System.out.println("2. Devolver model.Libro");
             System.out.println("3. Ver préstamos activos");
             System.out.println("4. Ver historial de préstamos");
             System.out.println("0. Volver");

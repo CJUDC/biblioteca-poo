@@ -1,3 +1,5 @@
+package model;
+
 public class Usuario {
     //Atributos
     private String name;
@@ -6,7 +8,7 @@ public class Usuario {
     private int userID;
 
     //Constructor
-//    public Usuario(String name, String userName, String password){
+//    public model.Usuario(String name, String userName, String password){
 //        this.setName(name);
 //        this.setUserName(userName);
 //        this.setPassword(password);
