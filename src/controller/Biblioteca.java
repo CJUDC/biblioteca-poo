@@ -62,7 +62,7 @@ public class Biblioteca {
 
         libros.add(libro);
 
-        System.out.println("model.Libro registrado exitosamente!");
+        System.out.println("Libro registrado exitosamente!");
     }
 
     public void displayBook() {

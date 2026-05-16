@@ -54,7 +54,7 @@ public class Menu {
     public void iniciarGestionLibros(){
         do {
             System.out.println("===== Gestión de Libros =====");
-            System.out.println("1. Registrar model.Libro");
+            System.out.println("1. Registrar Libro");
             System.out.println("2. Ver todos los libros");
             System.out.println("3. Buscar libro por ISBN");
             System.out.println("4. Buscar libro por título");
@@ -67,11 +67,11 @@ public class Menu {
 
             switch (opc) {
                 case 1:
-                    System.out.println("Registra Libros");
+                    biblioteca.addBook();
                     pausar(scanner);
                     break;
                 case 2:
-                    System.out.println("ve todos los libros");
+                    biblioteca.displayBook();
                     pausar(scanner);
                     break;
                 case 3:
@@ -100,10 +100,10 @@ public class Menu {
     public void iniciarGestionUsuarios(){
         do {
             System.out.println("===== GESTIÓN DE USUARIOS =====");
-            System.out.println("1. Registrar model.Usuario");
+            System.out.println("1. Registrar Usuario");
             System.out.println("2. Ver usuarios");
-            System.out.println("3. Buscar model.Usuario por ID");
-            System.out.println("4. Eliminar model.Usuario");
+            System.out.println("3. Buscar Usuario por ID");
+            System.out.println("4. Eliminar Usuario");
             System.out.println("0. Volver");
 
             System.out.println("\nElija una opción:");
@@ -112,12 +112,13 @@ public class Menu {
 
             switch (opc) {
                 case 1:
-                    System.out.println("Logica registrar");
+                    biblioteca.addUser();
                     pausar(scanner);
                     break;
                 case 2:
-                    System.out.println("logica ver usuarios");
+                    biblioteca.displayUser();
                     pausar(scanner);
+                    limpiarPantalla();
                     break;
                 case 3:
                     System.out.println("logica buscar usuario");
