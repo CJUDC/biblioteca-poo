@@ -23,7 +23,8 @@ public class Menu {
 
             switch (opc) {
                 case 1:
-                    System.out.println("Registra Libros");
+                    limpiarPantalla();
+                    iniciarGestionLibros();
                     pausar(scanner);
                     break;
                 case 2:
@@ -44,6 +45,53 @@ public class Menu {
                 default:
                     System.out.println("\nOpción inválida!!!");
 
+            }
+
+        } while (opc != 0);
+        scanner.close();
+    }
+
+    //menú Gestión libros
+    public void iniciarGestionLibros(){
+        do {
+            System.out.println("===== Gestión de Libros =====");
+            System.out.println("1. Registrar Libro");
+            System.out.println("2. Ver todos los libros");
+            System.out.println("3. Buscar libro por ISBN");
+            System.out.println("4. Buscar libro por título");
+            System.out.println("5. Eliminar libro");
+            System.out.println("0. Volver");
+
+            System.out.println("\nElija una opción:");
+            opc = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opc) {
+                case 1:
+                    System.out.println("Registra Libros");
+                    pausar(scanner);
+                    break;
+                case 2:
+                    System.out.println("ve todos los libros");
+                    pausar(scanner);
+                    break;
+                case 3:
+                    System.out.println("logica busqueda por ISBN");
+                    pausar(scanner);
+                    break;
+                case 4:
+                    System.out.println("logica Busqueda por título");
+                    pausar(scanner);
+                    break;
+                case 5:
+                    System.out.println("Logica Eliminar libro");
+                    break;
+                case 0:
+                    limpiarPantalla();
+                    iniciar();
+                    break;
+                default:
+                    System.out.println("\nOpción inválida!!!");
             }
 
         } while (opc != 0);
