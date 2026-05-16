@@ -32,11 +32,7 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 3:
-                    System.out.println("logica prestamo");
-                    pausar(scanner);
-                    break;
-                case 4:
-                    System.out.println("logica Devolución");
+                    iniciarGestionPrestamos();
                     pausar(scanner);
                     break;
                 case 0:
@@ -104,7 +100,7 @@ public class Menu {
             System.out.println("1. Registrar Usuario");
             System.out.println("2. Ver usuarios");
             System.out.println("3. Buscar Usuario por ID");
-            System.out.println("3. Eliminar Usuario");
+            System.out.println("4. Eliminar Usuario");
             System.out.println("0. Volver");
 
             System.out.println("\nElija una opción:");
@@ -138,6 +134,49 @@ public class Menu {
 
         } while (opc != 0);
         scanner.close();
+    }
+
+    public void iniciarGestionPrestamos(){
+        do {
+            System.out.println("===== GESTIÓN DE PRÉSTAMOS =====");
+            System.out.println("1. Prestar Libro");
+            System.out.println("2. Devolver Libro");
+            System.out.println("3. Ver préstamos activos");
+            System.out.println("4. Ver historial de préstamos");
+            System.out.println("0. Volver");
+
+            System.out.println("\nElija una opción:");
+            opc = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opc) {
+                case 1:
+                    System.out.println("Logica prestar libro");
+                    pausar(scanner);
+                    break;
+                case 2:
+                    System.out.println("logica devolver libro");
+                    pausar(scanner);
+                    break;
+                case 3:
+                    System.out.println("logica ver prestamo");
+                    pausar(scanner);
+                    break;
+                case 4:
+                    System.out.println("logica ver historial de prestamos");
+                    pausar(scanner);
+                    break;
+                case 0:
+                    iniciar();
+                    break;
+                default:
+                    System.out.println("\nOpción inválida!!!");
+
+            }
+
+        } while (opc != 0);
+        scanner.close();
+
     }
 
     // Método para pausar y esperar al usuario
