@@ -28,7 +28,7 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 2:
-                    System.out.println("Registra usuario");
+                    iniciarGestionUsuarios();
                     pausar(scanner);
                     break;
                 case 3:
@@ -92,6 +92,48 @@ public class Menu {
                     break;
                 default:
                     System.out.println("\nOpción inválida!!!");
+            }
+
+        } while (opc != 0);
+        scanner.close();
+    }
+
+    public void iniciarGestionUsuarios(){
+        do {
+            System.out.println("===== GESTIÓN DE USUARIOS =====");
+            System.out.println("1. Registrar Usuario");
+            System.out.println("2. Ver usuarios");
+            System.out.println("3. Buscar Usuario por ID");
+            System.out.println("3. Eliminar Usuario");
+            System.out.println("0. Volver");
+
+            System.out.println("\nElija una opción:");
+            opc = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opc) {
+                case 1:
+                    System.out.println("Logica registrar");
+                    pausar(scanner);
+                    break;
+                case 2:
+                    System.out.println("logica ver usuarios");
+                    pausar(scanner);
+                    break;
+                case 3:
+                    System.out.println("logica buscar usuario");
+                    pausar(scanner);
+                    break;
+                case 4:
+                    System.out.println("logica eliminar usuario");
+                    pausar(scanner);
+                    break;
+                case 0:
+                    iniciar();
+                    break;
+                default:
+                    System.out.println("\nOpción inválida!!!");
+
             }
 
         } while (opc != 0);
