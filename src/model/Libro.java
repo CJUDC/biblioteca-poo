@@ -7,6 +7,7 @@ public class Libro {
     private String author;
     public String realeaseDate;
     private int stock;
+    public Prestamo prestamo;
 
     //Constructor
     public Libro(String title, String author, String realeaseDate, int stock){

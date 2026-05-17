@@ -1,10 +1,13 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Usuario {
     //Atributos
     private String name;
     private String email;
     private int userID;
+    public ArrayList<Prestamo> prestamos;
 
     //Constructor
 //    public model.Usuario(String name, String email, String password){
