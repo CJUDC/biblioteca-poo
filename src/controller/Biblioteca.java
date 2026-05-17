@@ -1,11 +1,14 @@
-import java.sql.SQLOutput;
+package controller;
+
+import model.Libro;
+import model.Usuario;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Biblioteca {
-    //Libro libro = new Libro("principito", "Antoine de Saint-Exupéry", "04-01-1943");
-    //Usuario usuario = new Usuario("carlos", "cjcm", "skrillex");
+
     //Atributos
     public String name;
     public ArrayList<Libro> libros = new ArrayList<>();
