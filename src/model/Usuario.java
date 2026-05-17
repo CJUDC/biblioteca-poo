@@ -3,14 +3,13 @@ package model;
 public class Usuario {
     //Atributos
     private String name;
-    private String userName;
-    private String password;
+    private String email;
     private int userID;
 
     //Constructor
-//    public model.Usuario(String name, String userName, String password){
+//    public model.Usuario(String name, String email, String password){
 //        this.setName(name);
-//        this.setUserName(userName);
+//        this.setEmail(email);
 //        this.setPassword(password);
 //    }
 
@@ -22,12 +21,8 @@ public class Usuario {
         return name;
     }
 
-    public String getUserName(){
-        return userName;
-    }
-
-    public String getPassword() {
-        return password;
+    public String getEmail(){
+        return email;
     }
 
     public int getUserID() {
@@ -40,12 +35,8 @@ public class Usuario {
         this.name = name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setUserID(int userID) {

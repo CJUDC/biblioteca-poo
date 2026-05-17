@@ -26,11 +26,8 @@ public class Biblioteca {
         usuario.setName(sc.nextLine());
 
 
-        System.out.println("Ingrese su nombre de usuario: ");
-        usuario.setUserName(sc.nextLine());
-
-        System.out.println("Ingrese su contraseña: ");
-        usuario.setPassword(sc.nextLine());
+        System.out.println("Ingrese su Email: ");
+        usuario.setEmail(sc.nextLine());
 
         usuario.setUserID(random.nextInt());
 
@@ -39,7 +36,10 @@ public class Biblioteca {
 
     public void displayUser(){
         for (Usuario usuario : usuarios){
-            System.out.println("Hola " + usuario.getName() + " tu username es " + usuario.getUserName() + " y tu id es " + usuario.getUserID());
+            System.out.println("\n-------------------------");
+            System.out.println("ID: " + usuario.getUserID());
+            System.out.println("Nombre: " + usuario.getName());
+            System.out.println("Email: " + usuario.getEmail());
         }
     }
 

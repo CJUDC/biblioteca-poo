@@ -31,7 +31,7 @@ public class Menu {
                     break;
                 case 2:
                     iniciarGestionUsuarios();
-                    pausar(scanner);
+                  //  pausar(scanner);
                     break;
                 case 3:
                     iniciarGestionPrestamos();
@@ -85,7 +85,7 @@ public class Menu {
                     System.out.println("Logica Eliminar libro");
                     break;
                 case 0:
-                    limpiarPantalla();
+                    iniciar();
                     break;
                 default:
                     System.out.println("\nOpción inválida!!!");
