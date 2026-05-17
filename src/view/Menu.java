@@ -1,6 +1,8 @@
 package view;
 
 import controller.Biblioteca;
+import model.Prestamo;
+import model.Usuario;
 
 import java.util.Scanner;
 
@@ -154,6 +156,8 @@ public class Menu {
             switch (opc) {
                 case 1:
                     System.out.println("Logica prestar libro");
+                    prestarLibro();
+
                     pausar(scanner);
                     break;
                 case 2:
@@ -179,6 +183,29 @@ public class Menu {
         } while (opc != 0);
 
     }
+
+
+    public void prestarLibro(){
+
+        var prestamo = new Prestamo();
+
+        System.out.println("Ingrese su ID: ");
+        int id = scanner.nextInt();
+
+        System.out.println("Ingrese el ISBN del libro a prestar: ");
+        int ISBN = scanner.nextInt();
+
+
+        if(prestamo.usuario.getUserID() != id){
+            System.out.println("Usuario no existente");
+        } else if(prestamo.libro.getISBN() != ISBN){
+            System.out.println("ISBN incorrecto o no existente");
+        }
+
+        System.out.println("Usuario válido");
+
+    }
+
 
     // Método para pausar y esperar al usuario
     public static void pausar(Scanner sc) {
