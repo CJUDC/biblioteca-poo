@@ -44,17 +44,18 @@ public class Biblioteca {
     }
 
     public void addBook(){
-        var libro = new Libro("kaka", "jonas", "04/01/2000", 10);
+        var libro = new Libro("kaka", "jonas", 10);
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Ingrese el nombre del libro: ");
         libro.setTitle(sc.nextLine());
 
+
         System.out.println("Ingrese el autor del libro: ");
         libro.setAuthor(sc.nextLine());
 
-        System.out.println("Ingrese la fecha de publicación del libro: ");
-        libro.realeaseDate = sc.nextLine();
+        System.out.println("Ingrese el código ISBN del libro: ");
+        libro.setISBN(sc.nextInt());
 
         System.out.println("Ingrese el stock disponible del libro: ");
         libro.setStock(sc.nextInt());
@@ -62,7 +63,7 @@ public class Biblioteca {
 
         libros.add(libro);
 
-        System.out.println("Libro registrado exitosamente!");
+        System.out.println("\nLibro registrado exitosamente!");
     }
 
     public void displayBook() {
@@ -74,7 +75,7 @@ public class Biblioteca {
         for (Libro libro : libros) {
             System.out.println("Título: " + libro.getTitle() +
                     " | Autor: " + libro.getAuthor() +
-                    " | Fecha: " + libro.realeaseDate +
+                    " | ISBN: " + libro.getISBN() +
                     " | Stock: " + libro.getStock());
         }
     }

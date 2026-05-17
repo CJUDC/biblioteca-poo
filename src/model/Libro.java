@@ -3,23 +3,28 @@ package model;
 public class Libro {
 
     //Atributos
+    private int ISBN;
     private String title;
     private String author;
-    public String realeaseDate;
     private int stock;
     public Prestamo prestamo;
 
     //Constructor
-    public Libro(String title, String author, String realeaseDate, int stock){
+    public Libro(String title, String author, int stock){
         this.setTitle(title);
         this.setAuthor(author);
-        this.realeaseDate = realeaseDate;
         this.setStock(stock);
     }
 
     //Métodos
 
     //Getters
+
+
+    public int getISBN() {
+        return ISBN;
+    }
+
     public String getTitle(){
         return this.title;
     }
@@ -33,6 +38,12 @@ public class Libro {
     }
 
     //Setters
+
+
+    public void setISBN(int ISBN) {
+        this.ISBN = ISBN;
+    }
+
     public void setTitle(String title){
         this.title = title;
     }
