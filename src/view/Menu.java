@@ -28,7 +28,6 @@ public class Menu {
                 case 1:
                     limpiarPantalla();
                     iniciarGestionLibros();
-                    pausar(scanner);
                     break;
                 case 2:
                     iniciarGestionUsuarios();
@@ -87,7 +86,6 @@ public class Menu {
                     break;
                 case 0:
                     limpiarPantalla();
-                    iniciar();
                     break;
                 default:
                     System.out.println("\nOpción inválida!!!");
@@ -137,14 +135,14 @@ public class Menu {
             }
 
         } while (opc != 0);
-        scanner.close();
+
     }
 
     public void iniciarGestionPrestamos(){
         do {
             System.out.println("===== GESTIÓN DE PRÉSTAMOS =====");
-            System.out.println("1. Prestar model.Libro");
-            System.out.println("2. Devolver model.Libro");
+            System.out.println("1. Prestar Libro");
+            System.out.println("2. Devolver Libro");
             System.out.println("3. Ver préstamos activos");
             System.out.println("4. Ver historial de préstamos");
             System.out.println("0. Volver");
@@ -179,7 +177,6 @@ public class Menu {
             }
 
         } while (opc != 0);
-        scanner.close();
 
     }
 
