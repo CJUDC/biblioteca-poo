@@ -10,7 +10,7 @@ public class Usuario {
     public ArrayList<Prestamo> prestamos;
 
     //Constructor
-//    public model.Usuario(String name, String email, String password){
+//    public Usuario(String name, String email, String password){
 //        this.setName(name);
 //        this.setEmail(email);
 //        this.setPassword(password);

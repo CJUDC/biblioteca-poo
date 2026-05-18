@@ -15,7 +15,7 @@ public class Biblioteca {
 
 
     Random random = new Random();
-    ArrayList<Usuario> usuarios = new ArrayList<>();
+    public ArrayList<Usuario> usuarios = new ArrayList<>();
 
 
     public void addUser(){
@@ -44,7 +44,7 @@ public class Biblioteca {
     }
 
     public void addBook(){
-        var libro = new Libro("kaka", "jonas", 10);
+        var libro = new Libro();
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Ingrese el nombre del libro: ");

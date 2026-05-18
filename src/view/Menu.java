@@ -1,9 +1,11 @@
 package view;
 
 import controller.Biblioteca;
+import model.Libro;
 import model.Prestamo;
 import model.Usuario;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Menu {
@@ -187,7 +189,6 @@ public class Menu {
 
     public void prestarLibro(){
 
-        var prestamo = new Prestamo();
 
         System.out.println("Ingrese su ID: ");
         int id = scanner.nextInt();
@@ -195,17 +196,36 @@ public class Menu {
         System.out.println("Ingrese el ISBN del libro a prestar: ");
         int ISBN = scanner.nextInt();
 
+        var user = buscarUsuario(id);
+        var book = buscarLibro(ISBN);
 
-        if(prestamo.usuario.getUserID() != id){
-            System.out.println("Usuario no existente");
-        } else if(prestamo.libro.getISBN() != ISBN){
-            System.out.println("ISBN incorrecto o no existente");
+        if(user == null || book == null){
+            System.out.println("Usuario inválido para prestamo");
         }
 
-        System.out.println("Usuario válido");
+        System.out.println("Usuario " + user.getName() + " es válido para prestamo");
 
     }
 
+
+    public Usuario buscarUsuario(int id){
+        for(Usuario usuario: biblioteca.usuarios){
+            if(usuario.getUserID() == id){
+                return usuario;
+            }
+        }
+
+        return null;
+    }
+
+    public Libro buscarLibro(int ISBN){
+        for(Libro libro: biblioteca.libros){
+            if(libro.getISBN() == ISBN){
+                return libro;
+            }
+        }
+        return null;
+    }
 
     // Método para pausar y esperar al usuario
     public static void pausar(Scanner sc) {
