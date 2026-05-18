@@ -188,8 +188,6 @@ public class Menu {
 
 
     public void prestarLibro(){
-
-
         System.out.println("Ingrese su ID: ");
         int id = scanner.nextInt();
 
@@ -205,6 +203,10 @@ public class Menu {
 
         System.out.println("Usuario " + user.getName() + " es válido para prestamo");
 
+        Prestamo prestamo = new Prestamo(user, book);
+
+        System.out.println("\n-----Préstamo Creado-----");
+        System.out.println("El usuario " + prestamo.usuario.getName() + " ha realizado un préstamo con el/los libro: " + prestamo.libro.getTitle());
     }
 
 

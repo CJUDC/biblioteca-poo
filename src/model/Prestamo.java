@@ -7,6 +7,11 @@ public class Prestamo {
   public Usuario usuario;
   public Libro libro;
 
+  public Prestamo(Usuario usuario, Libro libro){
+    this.usuario = usuario;
+    this.libro = libro;
+  }
+
   //Getters
   public int getPrestamoId() {
     return prestamoId;
