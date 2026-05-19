@@ -38,6 +38,12 @@ public class Biblioteca {
     }
 
     public void displayUser(){
+
+        if(usuarios.isEmpty()){
+            System.out.println("\nNo hay ningún Usuario registrado");
+            return;
+        }
+
         for (Usuario usuario : usuarios){
             System.out.println("\n-------------------------");
             System.out.println("ID: " + usuario.getUserID());
@@ -229,9 +235,39 @@ public class Biblioteca {
         }
 
         libros.remove(libroAEliminar);
-        
+
         System.out.println("\nLibro eliminado exitosamente!");
 
+    }
+
+    public void eliminarUsuario(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\nIngrese el ID del usuario a eliminar");
+        int id = scanner.nextInt();
+
+        Usuario usuarioAEliminar = buscarUsuario(id);
+
+        if (usuarioAEliminar == null){
+            System.out.println("Usuario no existente!");
+            return;
+        }
+
+        scanner.nextLine();
+
+        System.out.println("\nDesea eliminar el usuario? S/N");
+        String ans = scanner.nextLine().trim().toLowerCase();
+
+        if (ans.equals("n")){
+            System.out.println("\nUsuario no eliminado");
+            return;
+        } else if (ans.equals("s")){
+            usuarios.remove(usuarioAEliminar);
+            System.out.println("\nEl usuario ha sido eliminado exitosamente!");
+        }
+        else {
+            System.out.println("\nOpción no válida. Operación cancelada.");
+        }
     }
 
 

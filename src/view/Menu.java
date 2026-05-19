@@ -102,7 +102,7 @@ public class Menu {
 
     public void iniciarGestionUsuarios(){
         do {
-            System.out.println("===== GESTIÓN DE USUARIOS =====");
+            System.out.println("\n===== GESTIÓN DE USUARIOS =====");
             System.out.println("1. Registrar Usuario");
             System.out.println("2. Ver usuarios");
             System.out.println("3. Buscar Usuario por ID");
@@ -127,7 +127,7 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 4:
-                    System.out.println("logica eliminar usuario");
+                    biblioteca.eliminarUsuario();
                     pausar(scanner);
                     break;
                 case 0:
