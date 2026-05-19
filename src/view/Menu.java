@@ -161,7 +161,7 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 2:
-                    System.out.println("logica devolver libro");
+                    biblioteca.devolverLibro();
                     pausar(scanner);
                     break;
                 case 3:

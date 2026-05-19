@@ -133,22 +133,22 @@ public class Biblioteca {
     }
 
     public void displayPrestamo(){
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("\nIngresa el ID del usuario: ");
-        int id = scanner.nextInt();
-
-        Usuario usuarioEncontrado = buscarUsuario(id);
-
-        if (usuarioEncontrado == null){
-            System.out.println("\nUsuario no existente NULL");
-            return;
-        }
-
-        if(usuarioEncontrado.getUserID() != id){
-            System.out.println("Usuario no existente");
-            return;
-        }
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.println("\nIngresa el ID del usuario: ");
+//        int id = scanner.nextInt();
+//
+//        Usuario usuarioEncontrado = buscarUsuario(id);
+//
+//        if (usuarioEncontrado == null){
+//            System.out.println("\nUsuario no existente NULL");
+//            return;
+//        }
+//
+//        if(usuarioEncontrado.getUserID() != id){
+//            System.out.println("Usuario no existente");
+//            return;
+//        }
 
         System.out.println("----------------------Lista de Préstamos--------------------");
 
@@ -283,6 +283,43 @@ public class Biblioteca {
         else {
             System.out.println("\nOpción no válida. Operación cancelada.");
         }
+    }
+
+    public void devolverLibro(){
+
+        displayPrestamo();
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\nIngresa el ID del usuario: ");
+        int id = scanner.nextInt();
+
+        Usuario usuarioEncontrado = buscarUsuario(id);
+
+        if (usuarioEncontrado == null){
+            System.out.println("\nUsuario no existente NULL");
+            return;
+        }
+
+        if(usuarioEncontrado.getUserID() != id){
+            System.out.println("\nUsuario no existente");
+            return;
+        }
+
+        System.out.println("\nIngrese el ISBN: ");
+        int ISBN = scanner.nextInt();
+
+        Libro libroEncontrado = buscarLibro(ISBN);
+
+        if(libroEncontrado == null){
+            System.out.println("\nLibro no encontrado ó no registrado");
+            return;
+        }
+
+        libroEncontrado.setStock(libroEncontrado.getStock() + 1);
+
+        System.out.println("\nEl libro " + libroEncontrado.getTitle() + " Ha sido devuelto exitosamente!");
+
     }
 
 
