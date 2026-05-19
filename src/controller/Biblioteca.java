@@ -133,22 +133,6 @@ public class Biblioteca {
     }
 
     public void displayPrestamo(){
-//        Scanner scanner = new Scanner(System.in);
-//
-//        System.out.println("\nIngresa el ID del usuario: ");
-//        int id = scanner.nextInt();
-//
-//        Usuario usuarioEncontrado = buscarUsuario(id);
-//
-//        if (usuarioEncontrado == null){
-//            System.out.println("\nUsuario no existente NULL");
-//            return;
-//        }
-//
-//        if(usuarioEncontrado.getUserID() != id){
-//            System.out.println("Usuario no existente");
-//            return;
-//        }
 
         System.out.println("----------------------Lista de Préstamos--------------------");
 
