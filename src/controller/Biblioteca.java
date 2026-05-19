@@ -24,7 +24,7 @@ public class Biblioteca {
         var usuario = new Usuario();
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("Ingrese su nombre: ");
+        System.out.println("\nIngrese su nombre: ");
         usuario.setName(sc.nextLine());
 
 
@@ -49,7 +49,7 @@ public class Biblioteca {
         var libro = new Libro();
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Ingrese el nombre del libro: ");
+        System.out.println("\nIngrese el nombre del libro: ");
         libro.setTitle(sc.nextLine());
 
 
@@ -111,10 +111,15 @@ public class Biblioteca {
     public void displayPrestamo(){
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Ingresa el ID del usuario: ");
+        System.out.println("\nIngresa el ID del usuario: ");
         int id = scanner.nextInt();
 
         Usuario usuarioEncontrado = buscarUsuario(id);
+
+        if (usuarioEncontrado == null){
+            System.out.println("Usuario no existente NULL");
+            return;
+        }
 
         if(usuarioEncontrado.getUserID() != id){
             System.out.println("Usuario no existente");
@@ -130,6 +135,24 @@ public class Biblioteca {
         }
 
     }
+
+    public void displayUsuarioEncontradoXID(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\nIngrese el ID del usuario a buscar: ");
+        int id = scanner.nextInt();
+
+        Usuario usuarioEncontrado = buscarUsuario(id);
+
+        if(usuarioEncontrado == null){
+            System.out.println("\nUsuario No encontrado!");
+            return;
+        }
+
+        System.out.println("\nEl Usuario que busca es: ");
+        System.out.println("Nombre: " + usuarioEncontrado.getName());
+        System.out.println("Email: " + usuarioEncontrado.getEmail());
+    }
     
     public Usuario buscarUsuario(int id){
         for(Usuario usuario: usuarios){
@@ -139,6 +162,8 @@ public class Biblioteca {
         }
         return null;
     }
+
+
 
     public Libro buscarLibro(int ISBN){
         for(Libro libro: libros){

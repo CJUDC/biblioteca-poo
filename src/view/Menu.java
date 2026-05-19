@@ -120,10 +120,9 @@ public class Menu {
                 case 2:
                     biblioteca.displayUser();
                     pausar(scanner);
-                    limpiarPantalla();
                     break;
                 case 3:
-                    System.out.println("logica buscar usuario");
+                    biblioteca.displayUsuarioEncontradoXID();
                     pausar(scanner);
                     break;
                 case 4:
@@ -165,7 +164,6 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 3:
-                    System.out.println("logica ver prestamo");
                     biblioteca.displayPrestamo();
                     pausar(scanner);
                     break;
