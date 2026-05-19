@@ -111,11 +111,15 @@ public class Biblioteca {
             return;
         }
 
+        if(prestamos.size() >= 3){
+            System.out.println("\nUsted ha superado el mínimo de prestamos aceptado por la biblioteca");
+            return;
+        }
 
         Prestamo prestamo = new Prestamo(usuarioEncontrado, libroEncontrado);
         prestamos.add(prestamo);
 
-        
+
 
         System.out.println("\n---------------------Préstamo Creado--------------------------");
         System.out.println("El usuario " + usuarioEncontrado.getName() + " ha realizado un préstamo con el/los libro: " + libroEncontrado.getTitle());
@@ -131,7 +135,7 @@ public class Biblioteca {
         Usuario usuarioEncontrado = buscarUsuario(id);
 
         if (usuarioEncontrado == null){
-            System.out.println("Usuario no existente NULL");
+            System.out.println("\nUsuario no existente NULL");
             return;
         }
 
@@ -140,12 +144,11 @@ public class Biblioteca {
             return;
         }
 
+        System.out.println("----------------------Lista de Préstamos--------------------");
+
         for(Prestamo prestamo : prestamos){
-            System.out.println("----Lista de Préstamos----");
-            System.out.println(
-                    "Usuario: " + prestamo.usuario.getName() +
-                            "\nUsted tiene activo los siguientes préstamos: " +
-                            " | Libro: " + prestamo.libro.getTitle());
+
+            System.out.println("Usuario: " + prestamo.usuario.getName() + " | Libro: " + prestamo.libro.getTitle());
         }
 
     }
