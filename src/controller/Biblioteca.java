@@ -108,6 +108,29 @@ public class Biblioteca {
 
     }
 
+    public void displayPrestamo(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Ingresa el ID del usuario: ");
+        int id = scanner.nextInt();
+
+        Usuario usuarioEncontrado = buscarUsuario(id);
+
+        if(usuarioEncontrado.getUserID() != id){
+            System.out.println("Usuario no existente");
+            return;
+        }
+
+        for(Prestamo prestamo : prestamos){
+            System.out.println("----Lista de Préstamos----");
+            System.out.println(
+                    "Usuario: " + prestamo.usuario.getName() +
+                            "\nUsted tiene activo los siguientes préstamos: " +
+                            " | Libro: " + prestamo.libro.getTitle());
+        }
+
+    }
+    
     public Usuario buscarUsuario(int id){
         for(Usuario usuario: usuarios){
             if(usuario.getUserID() == id){
