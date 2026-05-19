@@ -111,6 +111,12 @@ public class Biblioteca {
             return;
         }
 
+        if(libroEncontrado.getStock() == 0){
+            System.out.println("\nLibro no disponible para prestar!");
+            System.out.println("\n| Stock: " + libroEncontrado.getStock());
+            return;
+        }
+
         if(prestamos.size() >= 3){
             System.out.println("\nUsted ha superado el mínimo de prestamos aceptado por la biblioteca");
             return;
@@ -118,7 +124,7 @@ public class Biblioteca {
 
         Prestamo prestamo = new Prestamo(usuarioEncontrado, libroEncontrado);
         prestamos.add(prestamo);
-
+        libroEncontrado.setStock(libroEncontrado.getStock() - 1);
 
 
         System.out.println("\n---------------------Préstamo Creado--------------------------");
@@ -150,7 +156,6 @@ public class Biblioteca {
 
             System.out.println("Usuario: " + prestamo.usuario.getName() + " | Libro: " + prestamo.libro.getTitle());
         }
-
     }
 
     public void displayUsuarioEncontradoXID(){
