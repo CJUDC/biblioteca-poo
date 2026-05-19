@@ -163,6 +163,27 @@ public class Biblioteca {
         return null;
     }
 
+    public void buscarLibroXISBN(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\nIngrese el ISBN: ");
+        int ISBN = scanner.nextInt();
+
+        Libro libroEncontrado = buscarLibro(ISBN);
+
+        if(libroEncontrado == null){
+            System.out.println("\nLibro no encontrado ó no registrado");
+            return;
+        }
+
+        System.out.println("-----------------------------------------------------");
+        System.out.println("Libro: " + libroEncontrado.getTitle() +
+                            " |Autor: " + libroEncontrado.getAuthor() +
+                            " |Disponibilidad: " + libroEncontrado.getStock());
+        System.out.println("-----------------------------------------------------");
+
+    }
+
 
 
     public Libro buscarLibro(int ISBN){

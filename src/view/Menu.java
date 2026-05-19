@@ -79,6 +79,7 @@ public class Menu {
                     break;
                 case 3:
                     System.out.println("logica busqueda por ISBN");
+                    biblioteca.buscarLibroXISBN();
                     pausar(scanner);
                     break;
                 case 4:
