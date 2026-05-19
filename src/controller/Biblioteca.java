@@ -5,6 +5,7 @@ import model.Prestamo;
 import model.Usuario;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -184,7 +185,26 @@ public class Biblioteca {
 
     }
 
+    public void buscarLibroXTitulo(){
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("\nIngrese el Título del libro: ");
+        String titulo = scanner.nextLine().toLowerCase();
+
+        for (Libro libro : libros){
+            if (!Objects.equals(libro.getTitle(), titulo)){
+                System.out.println("\nLibro no encontrado!");
+                return;
+            }
+
+            System.out.println("\n----------------------------------");
+            System.out.println("Libro: " + libro.getTitle());
+            System.out.println("Autor: " + libro.getAuthor());
+            System.out.println("Disponibilidad: " + libro.getStock());
+            System.out.println("\n----------------------------------");
+
+        }
+    }
 
     public Libro buscarLibro(int ISBN){
         for(Libro libro: libros){

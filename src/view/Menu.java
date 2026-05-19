@@ -84,6 +84,7 @@ public class Menu {
                     break;
                 case 4:
                     System.out.println("logica Busqueda por título");
+                    biblioteca.buscarLibroXTitulo();
                     pausar(scanner);
                     break;
                 case 5:
