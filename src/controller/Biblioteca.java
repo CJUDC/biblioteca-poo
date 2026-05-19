@@ -215,5 +215,24 @@ public class Biblioteca {
         return null;
     }
 
+    public void eliminarLibro(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\nIngrese el ISBN del Libro a eliminar: ");
+        int ISBN = scanner.nextInt();
+
+        Libro libroAEliminar = buscarLibro(ISBN);
+
+        if (libroAEliminar == null){
+            System.out.println("\nLibro no existente!");
+            return;
+        }
+
+        libros.remove(libroAEliminar);
+        
+        System.out.println("\nLibro eliminado exitosamente!");
+
+    }
+
 
 }

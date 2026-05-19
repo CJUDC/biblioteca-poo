@@ -78,17 +78,16 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 3:
-                    System.out.println("logica busqueda por ISBN");
                     biblioteca.buscarLibroXISBN();
                     pausar(scanner);
                     break;
                 case 4:
-                    System.out.println("logica Busqueda por título");
                     biblioteca.buscarLibroXTitulo();
                     pausar(scanner);
                     break;
                 case 5:
-                    System.out.println("Logica Eliminar libro");
+                    biblioteca.eliminarLibro();
+                    pausar(scanner);
                     break;
                 case 0:
                     iniciar();
