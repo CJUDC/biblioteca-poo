@@ -1,6 +1,7 @@
 package controller;
 
 import model.Libro;
+import model.Prestamo;
 import model.Usuario;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Biblioteca {
 
     Random random = new Random();
     public ArrayList<Usuario> usuarios = new ArrayList<>();
+    public ArrayList<Prestamo> prestamos = new ArrayList<>();
 
 
     public void addUser(){
@@ -79,5 +81,50 @@ public class Biblioteca {
                     " | Stock: " + libro.getStock());
         }
     }
+
+    public void addPrestamos(){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Ingrese su ID: ");
+        int id = scanner.nextInt();
+
+        System.out.println("Ingrese el ISBN del libro a prestar: ");
+        int ISBN = scanner.nextInt();
+
+        var usuarioEncontrado = buscarUsuario(id);
+        var libroEncontrado = buscarLibro(ISBN);
+
+        if(usuarioEncontrado == null || libroEncontrado == null){
+            System.out.println("Usuario o libro inválido");
+            return;
+        }
+
+
+        Prestamo prestamo = new Prestamo(usuarioEncontrado, libroEncontrado);
+        prestamos.add(prestamo);
+
+        System.out.println("\n---------------------Préstamo Creado--------------------------");
+        System.out.println("El usuario " + usuarioEncontrado.getName() + " ha realizado un préstamo con el/los libro: " + libroEncontrado.getTitle());
+
+    }
+
+    public Usuario buscarUsuario(int id){
+        for(Usuario usuario: usuarios){
+            if(usuario.getUserID() == id){
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    public Libro buscarLibro(int ISBN){
+        for(Libro libro: libros){
+            if(libro.getISBN() == ISBN){
+                return libro;
+            }
+        }
+        return null;
+    }
+
 
 }

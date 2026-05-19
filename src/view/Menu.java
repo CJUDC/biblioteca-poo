@@ -157,9 +157,7 @@ public class Menu {
 
             switch (opc) {
                 case 1:
-                    System.out.println("Logica prestar libro");
-                    prestarLibro();
-
+                    biblioteca.addPrestamos();
                     pausar(scanner);
                     break;
                 case 2:
@@ -168,6 +166,7 @@ public class Menu {
                     break;
                 case 3:
                     System.out.println("logica ver prestamo");
+                    biblioteca.displayPrestamo();
                     pausar(scanner);
                     break;
                 case 4:
@@ -186,47 +185,6 @@ public class Menu {
 
     }
 
-
-    public void prestarLibro(){
-        System.out.println("Ingrese su ID: ");
-        int id = scanner.nextInt();
-
-        System.out.println("Ingrese el ISBN del libro a prestar: ");
-        int ISBN = scanner.nextInt();
-
-        var user = buscarUsuario(id);
-        var book = buscarLibro(ISBN);
-
-        if(user == null || book == null){
-            System.out.println("Usuario inválido para prestamo");
-        }
-
-        System.out.println("Usuario " + user.getName() + " es válido para prestamo");
-
-        Prestamo prestamo = new Prestamo(user, book);
-
-        System.out.println("\n-----Préstamo Creado-----");
-        System.out.println("El usuario " + prestamo.usuario.getName() + " ha realizado un préstamo con el/los libro: " + prestamo.libro.getTitle());
-    }
-
-
-    public Usuario buscarUsuario(int id){
-        for(Usuario usuario: biblioteca.usuarios){
-            if(usuario.getUserID() == id){
-                return usuario;
-            }
-        }
-        return null;
-    }
-
-    public Libro buscarLibro(int ISBN){
-        for(Libro libro: biblioteca.libros){
-            if(libro.getISBN() == ISBN){
-                return libro;
-            }
-        }
-        return null;
-    }
 
     // Método para pausar y esperar al usuario
     public static void pausar(Scanner sc) {
