@@ -25,14 +25,15 @@ public class Biblioteca {
         var usuario = new Usuario();
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("\nIngrese su nombre: ");
-        usuario.setName(sc.nextLine());
-
+        //System.out.println("\nIngrese su nombre: ");
+        //usuario.setName(sc.nextLine());
+        usuario.setName("Carlos");
 
         System.out.println("Ingrese su Email: ");
-        usuario.setEmail(sc.nextLine());
+       // usuario.setEmail(sc.nextLine());
+        usuario.setEmail("ccastillom1@unicartagena.edu.co");
 
-        usuario.setUserID(random.nextInt());
+        usuario.setUserID(666);
 
         usuarios.add(usuario);
     }
@@ -57,17 +58,21 @@ public class Biblioteca {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("\nIngrese el nombre del libro: ");
-        libro.setTitle(sc.nextLine());
+       // libro.setTitle(sc.nextLine());
+        libro.setTitle("principito");
 
 
         System.out.println("Ingrese el autor del libro: ");
-        libro.setAuthor(sc.nextLine());
+        //libro.setAuthor(sc.nextLine());
+        libro.setAuthor("Jon Snow");
 
         System.out.println("Ingrese el código ISBN del libro: ");
-        libro.setISBN(sc.nextInt());
+        //libro.setISBN(sc.nextInt());
+        libro.setISBN(123);
 
         System.out.println("Ingrese el stock disponible del libro: ");
-        libro.setStock(sc.nextInt());
+       // libro.setStock(sc.nextInt());
+        libro.setStock(5);
         sc.nextLine();
 
         libros.add(libro);
@@ -109,6 +114,8 @@ public class Biblioteca {
 
         Prestamo prestamo = new Prestamo(usuarioEncontrado, libroEncontrado);
         prestamos.add(prestamo);
+
+        
 
         System.out.println("\n---------------------Préstamo Creado--------------------------");
         System.out.println("El usuario " + usuarioEncontrado.getName() + " ha realizado un préstamo con el/los libro: " + libroEncontrado.getTitle());
