@@ -136,11 +136,17 @@ public class Biblioteca {
 
         for(Prestamo prestamo : prestamos){
 
+            if (!prestamo.state){
+                System.out.println("\nNo hay Prestamos activos");
+                return;
+            }
+
             System.out.println("Usuario: " + prestamo.usuario.getName());
             System.out.println("Libro: " + prestamo.libro.getTitle());
             System.out.println("Fecha préstamo: " + prestamo.fecha);
             String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
             System.out.println(estado);
+            System.out.println(" ");
         }
     }
 
@@ -302,11 +308,23 @@ public class Biblioteca {
             return;
         }
 
+
+        Prestamo prestamoEncontrado = buscarPrestamo(usuarioEncontrado, libroEncontrado);
         libroEncontrado.setStock(libroEncontrado.getStock() + 1);
+        prestamoEncontrado.state = false;
+
 
         System.out.println("\nEl libro " + libroEncontrado.getTitle() + " Ha sido devuelto exitosamente!");
 
     }
 
+    public Prestamo buscarPrestamo(Usuario usuario, Libro libro){
+        for(Prestamo prestamo : prestamos){
+            if(prestamo.usuario == usuario && prestamo.libro == libro){
+                return prestamo;
+            }
+        }
+        return null;
+    }
 
 }

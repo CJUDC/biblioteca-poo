@@ -7,14 +7,8 @@ public class Libro {
     private String title;
     private String author;
     private int stock;
-    public Prestamo prestamo;
 
     //Constructor
-//    public Libro(String title, String author, int stock){
-//        this.setTitle(title);
-//        this.setAuthor(author);
-//        this.setStock(stock);
-//    }
 
     //Métodos
 
