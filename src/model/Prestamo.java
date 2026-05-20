@@ -9,9 +9,9 @@ public class Prestamo {
   public Usuario usuario;
   public Libro libro;
   public boolean state;
-  public Date fecha;
+  public LocalDate fecha;
 
-  public Prestamo(Usuario usuario, Libro libro, boolean state, Date fecha){
+  public Prestamo(Usuario usuario, Libro libro, boolean state, LocalDate fecha){
     this.usuario = usuario;
     this.libro = libro;
     this.state = state;

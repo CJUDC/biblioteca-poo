@@ -4,10 +4,8 @@ import model.Libro;
 import model.Prestamo;
 import model.Usuario;
 
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Random;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.util.*;
 
 public class Biblioteca {
 
@@ -122,7 +120,7 @@ public class Biblioteca {
             return;
         }
 
-        Prestamo prestamo = new Prestamo(usuarioEncontrado, libroEncontrado);
+        Prestamo prestamo = new Prestamo(usuarioEncontrado, libroEncontrado, true, LocalDate.now());
         prestamos.add(prestamo);
         libroEncontrado.setStock(libroEncontrado.getStock() - 1);
 
