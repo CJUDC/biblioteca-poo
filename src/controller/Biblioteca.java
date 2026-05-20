@@ -126,7 +126,7 @@ public class Biblioteca {
 
 
         System.out.println("\n---------------------Préstamo Creado--------------------------");
-        System.out.println("El usuario " + usuarioEncontrado.getName() + " ha realizado un préstamo con el/los libro: " + libroEncontrado.getTitle());
+        System.out.println("El usuario " + usuarioEncontrado.getName() + " ha realizado un préstamo con el libro: " + libroEncontrado.getTitle() + " el " + prestamo.fecha);
 
     }
 
@@ -136,7 +136,11 @@ public class Biblioteca {
 
         for(Prestamo prestamo : prestamos){
 
-            System.out.println("Usuario: " + prestamo.usuario.getName() + " | Libro: " + prestamo.libro.getTitle());
+            System.out.println("Usuario: " + prestamo.usuario.getName());
+            System.out.println("Libro: " + prestamo.libro.getTitle());
+            System.out.println("Fecha préstamo: " + prestamo.fecha);
+            String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
+            System.out.println(estado);
         }
     }
 
