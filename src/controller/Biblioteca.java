@@ -327,4 +327,15 @@ public class Biblioteca {
         return null;
     }
 
+    public void displayHistorial(){
+        for (Prestamo prestamo : prestamos){
+            System.out.println("Usuario: " + prestamo.usuario.getName());
+            System.out.println("Libro: " + prestamo.libro.getTitle());
+            System.out.println("Fecha préstamo: " + prestamo.fecha);
+            String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
+            System.out.println(estado);
+            System.out.println(" ");
+        }
+    }
+
 }

@@ -169,7 +169,7 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 4:
-                    System.out.println("logica ver historial de prestamos");
+                    biblioteca.displayHistorial();
                     pausar(scanner);
                     break;
                 case 0:
