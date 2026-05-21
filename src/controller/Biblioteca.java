@@ -23,15 +23,14 @@ public class Biblioteca {
         var usuario = new Usuario();
 
         Scanner sc = new Scanner(System.in);
-        //System.out.println("\nIngrese su nombre: ");
-        //usuario.setName(sc.nextLine());
-        usuario.setName("Carlos");
+        System.out.println("\nIngrese el nombre: ");
+        usuario.setName(sc.nextLine());
 
-        System.out.println("Ingrese su Email: ");
-       // usuario.setEmail(sc.nextLine());
-        usuario.setEmail("ccastillom1@unicartagena.edu.co");
+        System.out.println("Ingrese el Email: ");
+        usuario.setEmail(sc.nextLine());
 
-        usuario.setUserID(666);
+        System.out.println("Ingrese el ID: ");
+        usuario.setUserID(sc.nextInt());
 
         usuarios.add(usuario);
     }
@@ -56,21 +55,20 @@ public class Biblioteca {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("\nIngrese el nombre del libro: ");
-       // libro.setTitle(sc.nextLine());
-        libro.setTitle("principito");
+        libro.setTitle(sc.nextLine());
+
 
 
         System.out.println("Ingrese el autor del libro: ");
-        //libro.setAuthor(sc.nextLine());
-        libro.setAuthor("Jon Snow");
+        libro.setAuthor(sc.nextLine());
+
 
         System.out.println("Ingrese el código ISBN del libro: ");
-        //libro.setISBN(sc.nextInt());
-        libro.setISBN(123);
+        libro.setISBN(sc.nextInt());
 
         System.out.println("Ingrese el stock disponible del libro: ");
-       // libro.setStock(sc.nextInt());
-        libro.setStock(5);
+        libro.setStock(sc.nextInt());
+
         sc.nextLine();
 
         libros.add(libro);
@@ -329,7 +327,7 @@ public class Biblioteca {
 
     public void displayHistorial(){
         for (Prestamo prestamo : prestamos){
-            System.out.println("Usuario: " + prestamo.usuario.getName());
+            System.out.println("\nUsuario: " + prestamo.usuario.getName());
             System.out.println("Libro: " + prestamo.libro.getTitle());
             System.out.println("Fecha préstamo: " + prestamo.fecha);
             String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
