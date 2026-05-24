@@ -119,7 +119,7 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 2:
-                    biblioteca.displayUser();
+                    displayUser();
                     pausar(scanner);
                     break;
                 case 3:
@@ -203,6 +203,21 @@ public class Menu {
         } catch (Exception e) {
             // Si falla, simplemente imprime líneas en blanco para "desplazar" el texto
             for (int i = 0; i < 50; i++) System.out.println();
+        }
+    }
+
+    public void displayUser(){
+
+        if(biblioteca.usuarios.isEmpty()){
+            System.out.println("\nNo hay ningún Usuario registrado");
+            return;
+        }
+
+        for (Usuario usuario : biblioteca.usuarios){
+            System.out.println("\n-------------------------");
+            System.out.println("ID: " + usuario.getUserID());
+            System.out.println("Nombre: " + usuario.getName());
+            System.out.println("Email: " + usuario.getEmail());
         }
     }
 }

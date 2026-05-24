@@ -36,20 +36,6 @@ public class Biblioteca {
         usuarios.add(usuario);
     }
 
-    public void displayUser(){
-
-        if(usuarios.isEmpty()){
-            System.out.println("\nNo hay ningún Usuario registrado");
-            return;
-        }
-
-        for (Usuario usuario : usuarios){
-            System.out.println("\n-------------------------");
-            System.out.println("ID: " + usuario.getUserID());
-            System.out.println("Nombre: " + usuario.getName());
-            System.out.println("Email: " + usuario.getEmail());
-        }
-    }
 
     public void addBook(){
         var libro = new Libro();
@@ -78,19 +64,7 @@ public class Biblioteca {
         System.out.println("\nLibro registrado exitosamente!");
     }
 
-    public void displayBook() {
-        if (libros.isEmpty()) {
-            System.out.println("No hay libros registrados en la biblioteca.");
-            return;
-        }
-        System.out.println("--- Lista de Libros ---");
-        for (Libro libro : libros) {
-            System.out.println("Título: " + libro.getTitle() +
-                    " | Autor: " + libro.getAuthor() +
-                    " | ISBN: " + libro.getISBN() +
-                    " | Stock: " + libro.getStock());
-        }
-    }
+
 
     public void addPrestamos(){
         Scanner scanner = new Scanner(System.in);
