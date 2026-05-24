@@ -116,7 +116,10 @@ public class Menu {
 
             switch (opc) {
                 case 1:
-                    biblioteca.addUser();
+                    String nombre = leerTexto("\nIngrese el nombre: ");
+                    String correo = leerTexto("Ingrese el correo: ");
+                    int id = leerEntero("Ingrese el id: ");
+                    biblioteca.addUser(nombre, correo, id);
                     pausar(scanner);
                     break;
                 case 2:

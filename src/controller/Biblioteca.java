@@ -54,18 +54,12 @@ public class Biblioteca {
 
     //Métodos
 
-    public void addUser(){
+    public void addUser(String name, String email, int id){
         var usuario = new Usuario();
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("\nIngrese el nombre: ");
-        usuario.setName(sc.nextLine());
-
-        System.out.println("Ingrese el Email: ");
-        usuario.setEmail(sc.nextLine());
-
-        System.out.println("Ingrese el ID: ");
-        usuario.setUserID(sc.nextInt());
+        usuario.setName(name);
+        usuario.setEmail(email);
+        usuario.setUserID(id);
 
         usuarios.add(usuario);
     }
@@ -294,18 +288,4 @@ public class Biblioteca {
         return null;
     }
 
-<<<<<<< HEAD
-    public void displayHistorial(){
-        for (Prestamo prestamo : prestamos){
-            System.out.println("\nUsuario: " + prestamo.usuario.getName());
-            System.out.println("Libro: " + prestamo.libro.getTitle());
-            System.out.println("Fecha préstamo: " + prestamo.fecha);
-            String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
-            System.out.println(estado);
-            System.out.println(" ");
-        }
-    }
-
-=======
->>>>>>> c6fa41948465cba7bc5e53466d76879abf1cfd6c
 }
