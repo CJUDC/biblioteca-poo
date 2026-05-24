@@ -10,14 +10,49 @@ import java.util.*;
 public class Biblioteca {
 
     //Atributos
-    public String name;
-    public ArrayList<Libro> libros = new ArrayList<>();
+    private String name;
 
+    private ArrayList<Libro> libros = new ArrayList<>();
+    private ArrayList<Usuario> usuarios = new ArrayList<>();
+    private ArrayList<Prestamo> prestamos = new ArrayList<>();
 
-    Random random = new Random();
-    public ArrayList<Usuario> usuarios = new ArrayList<>();
-    public ArrayList<Prestamo> prestamos = new ArrayList<>();
+    //Getters
 
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Libro> getLibros() {
+        return libros;
+    }
+
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public ArrayList<Prestamo> getPrestamos() {
+        return prestamos;
+    }
+
+    //Setters
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLibros(ArrayList<Libro> libros) {
+        this.libros = libros;
+    }
+
+    public void setPrestamos(ArrayList<Prestamo> prestamos) {
+        this.prestamos = prestamos;
+    }
+
+    public void setUsuarios(ArrayList<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    //Métodos
 
     public void addUser(){
         var usuario = new Usuario();
@@ -35,59 +70,15 @@ public class Biblioteca {
         usuarios.add(usuario);
     }
 
-    public void displayUser(){
-
-        if(usuarios.isEmpty()){
-            System.out.println("\nNo hay ningún Usuario registrado");
-            return;
-        }
-
-        for (Usuario usuario : usuarios){
-            System.out.println("\n-------------------------");
-            System.out.println("ID: " + usuario.getUserID());
-            System.out.println("Nombre: " + usuario.getName());
-            System.out.println("Email: " + usuario.getEmail());
-        }
-    }
-
-    public void addBook(){
+    public void addBook(String titulo, String autor, int ISBN, int stock){
         var libro = new Libro();
-        Scanner sc = new Scanner(System.in);
 
-        System.out.println("\nIngrese el nombre del libro: ");
-        libro.setTitle(sc.nextLine());
-
-
-
-        System.out.println("Ingrese el autor del libro: ");
-        libro.setAuthor(sc.nextLine());
-
-
-        System.out.println("Ingrese el código ISBN del libro: ");
-        libro.setISBN(sc.nextInt());
-
-        System.out.println("Ingrese el stock disponible del libro: ");
-        libro.setStock(sc.nextInt());
-
-        sc.nextLine();
+        libro.setTitle(titulo);
+        libro.setAuthor(autor);
+        libro.setISBN(ISBN);
+        libro.setStock(stock);
 
         libros.add(libro);
-
-        System.out.println("\nLibro registrado exitosamente!");
-    }
-
-    public void displayBook() {
-        if (libros.isEmpty()) {
-            System.out.println("No hay libros registrados en la biblioteca.");
-            return;
-        }
-        System.out.println("--- Lista de Libros ---");
-        for (Libro libro : libros) {
-            System.out.println("Título: " + libro.getTitle() +
-                    " | Autor: " + libro.getAuthor() +
-                    " | ISBN: " + libro.getISBN() +
-                    " | Stock: " + libro.getStock());
-        }
     }
 
     public void addPrestamos(){
@@ -126,26 +117,6 @@ public class Biblioteca {
         System.out.println("\n---------------------Préstamo Creado--------------------------");
         System.out.println("El usuario " + usuarioEncontrado.getName() + " ha realizado un préstamo con el libro: " + libroEncontrado.getTitle() + " el " + prestamo.fecha);
 
-    }
-
-    public void displayPrestamo(){
-
-        System.out.println("----------------------Lista de Préstamos--------------------");
-
-        for(Prestamo prestamo : prestamos){
-
-            if (!prestamo.state){
-                System.out.println("\nNo hay Prestamos activos");
-                return;
-            }
-
-            System.out.println("Usuario: " + prestamo.usuario.getName());
-            System.out.println("Libro: " + prestamo.libro.getTitle());
-            System.out.println("Fecha préstamo: " + prestamo.fecha);
-            String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
-            System.out.println(estado);
-            System.out.println(" ");
-        }
     }
 
     public void displayUsuarioEncontradoXID(){
@@ -277,8 +248,6 @@ public class Biblioteca {
 
     public void devolverLibro(){
 
-        displayPrestamo();
-
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("\nIngresa el ID del usuario: ");
@@ -325,6 +294,7 @@ public class Biblioteca {
         return null;
     }
 
+<<<<<<< HEAD
     public void displayHistorial(){
         for (Prestamo prestamo : prestamos){
             System.out.println("\nUsuario: " + prestamo.usuario.getName());
@@ -336,4 +306,6 @@ public class Biblioteca {
         }
     }
 
+=======
+>>>>>>> c6fa41948465cba7bc5e53466d76879abf1cfd6c
 }

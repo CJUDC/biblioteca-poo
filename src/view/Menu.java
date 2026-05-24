@@ -11,10 +11,8 @@ import java.util.Scanner;
 public class Menu {
 
     Biblioteca biblioteca = new Biblioteca();
-
     Scanner scanner = new Scanner(System.in);
     int opc;
-
 
     public void iniciar() {
         do {
@@ -50,13 +48,13 @@ public class Menu {
             }
 
         } while (opc != 0);
-        scanner.close();
+       // scanner.close();
     }
 
-    //menú Gestión libros
+    //Menú Gestión libros
     public void iniciarGestionLibros(){
         do {
-            System.out.println("===== Gestión de Libros =====");
+            System.out.println("\n===== Gestión de Libros =====");
             System.out.println("1. Registrar Libro");
             System.out.println("2. Ver todos los libros");
             System.out.println("3. Buscar libro por ISBN");
@@ -70,11 +68,15 @@ public class Menu {
 
             switch (opc) {
                 case 1:
-                    biblioteca.addBook();
+                    String titulo = leerTexto("Ingrese el título del libro: ");
+                    String autor = leerTexto("Ingrese el autor del libro: ");
+                    int ISBN = leerEntero("Ingrese el ISBN del libro: ");
+                    int stock = leerEntero("Ingrese el stock del libro: ");
+                    biblioteca.addBook(titulo, autor, ISBN, stock);
                     pausar(scanner);
                     break;
                 case 2:
-                    biblioteca.displayBook();
+                    displayBook();
                     pausar(scanner);
                     break;
                 case 3:
@@ -97,7 +99,6 @@ public class Menu {
             }
 
         } while (opc != 0);
-        scanner.close();
     }
 
     public void iniciarGestionUsuarios(){
@@ -119,7 +120,7 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 2:
-                    biblioteca.displayUser();
+                    displayUser();
                     pausar(scanner);
                     break;
                 case 3:
@@ -139,12 +140,11 @@ public class Menu {
             }
 
         } while (opc != 0);
-
     }
 
     public void iniciarGestionPrestamos(){
         do {
-            System.out.println("===== GESTIÓN DE PRÉSTAMOS =====");
+            System.out.println("\n===== GESTIÓN DE PRÉSTAMOS =====");
             System.out.println("1. Prestar Libro");
             System.out.println("2. Devolver Libro");
             System.out.println("3. Ver préstamos activos");
@@ -161,15 +161,16 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 2:
+                    displayPrestamo();
                     biblioteca.devolverLibro();
                     pausar(scanner);
                     break;
                 case 3:
-                    biblioteca.displayPrestamo();
+                    displayPrestamo();
                     pausar(scanner);
                     break;
                 case 4:
-                    biblioteca.displayHistorial();
+                    displayHistorial();
                     pausar(scanner);
                     break;
                 case 0:
@@ -177,13 +178,9 @@ public class Menu {
                     break;
                 default:
                     System.out.println("\nOpción inválida!!!");
-
             }
-
         } while (opc != 0);
-
     }
-
 
     // Método para pausar y esperar al usuario
     public static void pausar(Scanner sc) {
@@ -203,6 +200,85 @@ public class Menu {
         } catch (Exception e) {
             // Si falla, simplemente imprime líneas en blanco para "desplazar" el texto
             for (int i = 0; i < 50; i++) System.out.println();
+        }
+    }
+
+    public void displayUser(){
+
+        if(biblioteca.getUsuarios().isEmpty()){
+            System.out.println("\nNo hay ningún Usuario registrado");
+            return;
+        }
+
+        for (Usuario usuario : biblioteca.getUsuarios()){
+            System.out.println("\n-------------------------");
+            System.out.println("ID: " + usuario.getUserID());
+            System.out.println("Nombre: " + usuario.getName());
+            System.out.println("Email: " + usuario.getEmail());
+        }
+    }
+
+    public void displayBook() {
+        if (biblioteca.getLibros().isEmpty()) {
+            System.out.println("No hay libros registrados en la biblioteca.");
+            return;
+        }
+        System.out.println("--- Lista de Libros ---");
+        for (Libro libro : biblioteca.getLibros()) {
+            System.out.println("Título: " + libro.getTitle() +
+                    " | Autor: " + libro.getAuthor() +
+                    " | ISBN: " + libro.getISBN() +
+                    " | Stock: " + libro.getStock());
+        }
+    }
+
+    public void displayPrestamo(){
+
+        System.out.println("----------------------Lista de Préstamos--------------------");
+
+        for(Prestamo prestamo : biblioteca.getPrestamos()){
+
+            if (!prestamo.state){
+                System.out.println("\nNo hay Prestamos activos");
+                return;
+            }
+
+            System.out.println("Usuario: " + prestamo.usuario.getName());
+            System.out.println("Libro: " + prestamo.libro.getTitle());
+            System.out.println("Fecha préstamo: " + prestamo.fecha);
+            String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
+            System.out.println(estado);
+            System.out.println(" ");
+        }
+    }
+
+    public void displayHistorial(){
+        for (Prestamo prestamo : biblioteca.getPrestamos()){
+            System.out.println("Usuario: " + prestamo.usuario.getName());
+            System.out.println("Libro: " + prestamo.libro.getTitle());
+            System.out.println("Fecha préstamo: " + prestamo.fecha);
+            String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
+            System.out.println(estado);
+            System.out.println(" ");
+        }
+    }
+
+
+    //Utilidades
+
+    public String leerTexto(String prompt){
+        System.out.println(prompt);
+        return scanner.nextLine().trim();
+    }
+
+    public int leerEntero(String prompt){
+        while(true){
+            System.out.println(prompt);
+            try{
+                return Integer.parseInt(scanner.nextLine().trim());
+            } catch(Exception e){
+                System.out.println("⚠ Por favor ingrese un número válido.");
+            }
         }
     }
 }
