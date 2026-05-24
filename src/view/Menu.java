@@ -11,10 +11,8 @@ import java.util.Scanner;
 public class Menu {
 
     Biblioteca biblioteca = new Biblioteca();
-
     Scanner scanner = new Scanner(System.in);
     int opc;
-
 
     public void iniciar() {
         do {
@@ -50,13 +48,13 @@ public class Menu {
             }
 
         } while (opc != 0);
-        scanner.close();
+       // scanner.close();
     }
 
-    //menú Gestión libros
+    //Menú Gestión libros
     public void iniciarGestionLibros(){
         do {
-            System.out.println("===== Gestión de Libros =====");
+            System.out.println("\n===== Gestión de Libros =====");
             System.out.println("1. Registrar Libro");
             System.out.println("2. Ver todos los libros");
             System.out.println("3. Buscar libro por ISBN");
@@ -97,7 +95,6 @@ public class Menu {
             }
 
         } while (opc != 0);
-        scanner.close();
     }
 
     public void iniciarGestionUsuarios(){
@@ -139,12 +136,11 @@ public class Menu {
             }
 
         } while (opc != 0);
-
     }
 
     public void iniciarGestionPrestamos(){
         do {
-            System.out.println("===== GESTIÓN DE PRÉSTAMOS =====");
+            System.out.println("\n===== GESTIÓN DE PRÉSTAMOS =====");
             System.out.println("1. Prestar Libro");
             System.out.println("2. Devolver Libro");
             System.out.println("3. Ver préstamos activos");
@@ -178,13 +174,9 @@ public class Menu {
                     break;
                 default:
                     System.out.println("\nOpción inválida!!!");
-
             }
-
         } while (opc != 0);
-
     }
-
 
     // Método para pausar y esperar al usuario
     public static void pausar(Scanner sc) {
