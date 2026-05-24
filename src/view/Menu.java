@@ -160,7 +160,9 @@ public class Menu {
 
             switch (opc) {
                 case 1:
-                    biblioteca.addPrestamos();
+                    int userID = leerEntero("\nIngrese el id del usuario: ");
+                    int ISBN = leerEntero("Ingrese el ISBN del libro a prestar: ");
+                    biblioteca.addPrestamo(userID, ISBN);
                     pausar(scanner);
                     break;
                 case 2:
@@ -239,23 +241,26 @@ public class Menu {
 
         System.out.println("----------------------Lista de Préstamos--------------------");
 
+        boolean hayActivos = false;
+
         for(Prestamo prestamo : biblioteca.getPrestamos()){
 
-            if (!prestamo.state){
-                System.out.println("\nNo hay Prestamos activos");
-                return;
-            }
+            if(prestamo.state){
+                System.out.println("\nUsuario: " + prestamo.usuario.getName());
+                System.out.println("Libro: " + prestamo.libro.getTitle());
+                System.out.println("Fecha préstamo: " + prestamo.fecha);
+                System.out.println("Estado: ACTIVO");
 
-            System.out.println("Usuario: " + prestamo.usuario.getName());
-            System.out.println("Libro: " + prestamo.libro.getTitle());
-            System.out.println("Fecha préstamo: " + prestamo.fecha);
-            String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
-            System.out.println(estado);
-            System.out.println(" ");
+                hayActivos = true;
+            }
         }
+
+        if(!hayActivos) System.out.println("\nNo hay prestamos activos!");
+
     }
 
     public void displayHistorial(){
+
         for (Prestamo prestamo : biblioteca.getPrestamos()){
             System.out.println("Usuario: " + prestamo.usuario.getName());
             System.out.println("Libro: " + prestamo.libro.getTitle());

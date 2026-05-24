@@ -75,20 +75,13 @@ public class Biblioteca {
         libros.add(libro);
     }
 
-    public void addPrestamos(){
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Ingrese su ID: ");
-        int id = scanner.nextInt();
-
-        System.out.println("Ingrese el ISBN del libro a prestar: ");
-        int ISBN = scanner.nextInt();
+    public void addPrestamo(int id, int ISBN){
 
         var usuarioEncontrado = buscarUsuario(id);
         var libroEncontrado = buscarLibro(ISBN);
 
         if(usuarioEncontrado == null || libroEncontrado == null){
-            System.out.println("Usuario o libro inválido");
+            System.out.println("\nUsuario o libro inválido");
             return;
         }
 
@@ -98,14 +91,17 @@ public class Biblioteca {
             return;
         }
 
-        if(prestamos.size() >= 3){
-            System.out.println("\nUsted ha superado el mínimo de prestamos aceptado por la biblioteca");
+
+        long prestamosUsuario = prestamos.stream().filter(prestamo -> prestamo.usuario.equals(usuarioEncontrado) && prestamo.state == true).count();
+
+        if(prestamosUsuario >= 3){
+            System.out.println("\nUsted ha superado el máximo de prestamos aceptado por la biblioteca");
             return;
         }
 
+        libroEncontrado.setStock(libroEncontrado.getStock() - 1);
         Prestamo prestamo = new Prestamo(usuarioEncontrado, libroEncontrado, true, LocalDate.now());
         prestamos.add(prestamo);
-        libroEncontrado.setStock(libroEncontrado.getStock() - 1);
 
 
         System.out.println("\n---------------------Préstamo Creado--------------------------");

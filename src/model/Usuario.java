@@ -7,7 +7,6 @@ public class Usuario {
     private String name;
     private String email;
     private int userID;
-    public ArrayList<Prestamo> prestamos;
 
     //Constructor
 //    public Usuario(String name, String email, String password){
