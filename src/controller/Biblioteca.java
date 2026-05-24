@@ -99,6 +99,13 @@ public class Biblioteca {
             return;
         }
 
+        long cantidad = prestamos.stream().filter(p -> p.usuario.equals(usuarioEncontrado) && p.libro.equals(libroEncontrado) && p.state).count();
+
+        if(cantidad > 0){
+            System.out.println("\nEl usuario ya tiene este libro prestado.");
+            return;
+        }
+
         libroEncontrado.setStock(libroEncontrado.getStock() - 1);
         Prestamo prestamo = new Prestamo(usuarioEncontrado, libroEncontrado, true, LocalDate.now());
         prestamos.add(prestamo);
