@@ -71,31 +71,15 @@ public class Biblioteca {
         usuarios.add(usuario);
     }
 
-    public void addBook(){
+    public void addBook(String titulo, String autor, int ISBN, int stock){
         var libro = new Libro();
-        Scanner sc = new Scanner(System.in);
 
-        System.out.println("\nIngrese el nombre del libro: ");
-       // libro.setTitle(sc.nextLine());
-        libro.setTitle("principito");
-
-
-        System.out.println("Ingrese el autor del libro: ");
-        //libro.setAuthor(sc.nextLine());
-        libro.setAuthor("Jon Snow");
-
-        System.out.println("Ingrese el código ISBN del libro: ");
-        //libro.setISBN(sc.nextInt());
-        libro.setISBN(123);
-
-        System.out.println("Ingrese el stock disponible del libro: ");
-       // libro.setStock(sc.nextInt());
-        libro.setStock(5);
-        sc.nextLine();
+        libro.setTitle(titulo);
+        libro.setAuthor(autor);
+        libro.setISBN(ISBN);
+        libro.setStock(stock);
 
         libros.add(libro);
-
-        System.out.println("\nLibro registrado exitosamente!");
     }
 
     public void addPrestamos(){

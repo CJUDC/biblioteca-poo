@@ -68,7 +68,11 @@ public class Menu {
 
             switch (opc) {
                 case 1:
-                    biblioteca.addBook();
+                    String titulo = leerTexto("Ingrese el título del libro: ");
+                    String autor = leerTexto("Ingrese el autor del libro: ");
+                    int ISBN = leerEntero("Ingrese el ISBN del libro: ");
+                    int stock = leerEntero("Ingrese el stock del libro: ");
+                    biblioteca.addBook(titulo, autor, ISBN, stock);
                     pausar(scanner);
                     break;
                 case 2:
@@ -256,6 +260,25 @@ public class Menu {
             String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
             System.out.println(estado);
             System.out.println(" ");
+        }
+    }
+
+
+    //Utilidades
+
+    public String leerTexto(String prompt){
+        System.out.println(prompt);
+        return scanner.nextLine().trim();
+    }
+
+    public int leerEntero(String prompt){
+        while(true){
+            System.out.println(prompt);
+            try{
+                return Integer.parseInt(scanner.nextLine().trim());
+            } catch(Exception e){
+                System.out.println("⚠ Por favor ingrese un número válido.");
+            }
         }
     }
 }
