@@ -74,7 +74,7 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 2:
-                    biblioteca.displayBook();
+                    displayBook();
                     pausar(scanner);
                     break;
                 case 3:
@@ -218,6 +218,20 @@ public class Menu {
             System.out.println("ID: " + usuario.getUserID());
             System.out.println("Nombre: " + usuario.getName());
             System.out.println("Email: " + usuario.getEmail());
+        }
+    }
+
+    public void displayBook() {
+        if (biblioteca.libros.isEmpty()) {
+            System.out.println("No hay libros registrados en la biblioteca.");
+            return;
+        }
+        System.out.println("--- Lista de Libros ---");
+        for (Libro libro : biblioteca.libroslibros) {
+            System.out.println("Título: " + libro.getTitle() +
+                    " | Autor: " + libro.getAuthor() +
+                    " | ISBN: " + libro.getISBN() +
+                    " | Stock: " + libro.getStock());
         }
     }
 }
