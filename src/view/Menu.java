@@ -165,7 +165,7 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 3:
-                    biblioteca.displayPrestamo();
+                    displayPrestamo();
                     pausar(scanner);
                     break;
                 case 4:
@@ -227,11 +227,31 @@ public class Menu {
             return;
         }
         System.out.println("--- Lista de Libros ---");
-        for (Libro libro : biblioteca.libroslibros) {
+        for (Libro libro : biblioteca.libros) {
             System.out.println("Título: " + libro.getTitle() +
                     " | Autor: " + libro.getAuthor() +
                     " | ISBN: " + libro.getISBN() +
                     " | Stock: " + libro.getStock());
+        }
+    }
+
+    public void displayPrestamo(){
+
+        System.out.println("----------------------Lista de Préstamos--------------------");
+
+        for(Prestamo prestamo : biblioteca.prestamos){
+
+            if (!prestamo.state){
+                System.out.println("\nNo hay Prestamos activos");
+                return;
+            }
+
+            System.out.println("Usuario: " + prestamo.usuario.getName());
+            System.out.println("Libro: " + prestamo.libro.getTitle());
+            System.out.println("Fecha préstamo: " + prestamo.fecha);
+            String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
+            System.out.println(estado);
+            System.out.println(" ");
         }
     }
 }

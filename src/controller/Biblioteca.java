@@ -65,7 +65,6 @@ public class Biblioteca {
     }
 
 
-
     public void addPrestamos(){
         Scanner scanner = new Scanner(System.in);
 
@@ -104,25 +103,6 @@ public class Biblioteca {
 
     }
 
-    public void displayPrestamo(){
-
-        System.out.println("----------------------Lista de Préstamos--------------------");
-
-        for(Prestamo prestamo : prestamos){
-
-            if (!prestamo.state){
-                System.out.println("\nNo hay Prestamos activos");
-                return;
-            }
-
-            System.out.println("Usuario: " + prestamo.usuario.getName());
-            System.out.println("Libro: " + prestamo.libro.getTitle());
-            System.out.println("Fecha préstamo: " + prestamo.fecha);
-            String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
-            System.out.println(estado);
-            System.out.println(" ");
-        }
-    }
 
     public void displayUsuarioEncontradoXID(){
         Scanner scanner = new Scanner(System.in);
@@ -252,8 +232,6 @@ public class Biblioteca {
     }
 
     public void devolverLibro(){
-
-        displayPrestamo();
 
         Scanner scanner = new Scanner(System.in);
 
