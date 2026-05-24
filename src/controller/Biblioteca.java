@@ -10,14 +10,49 @@ import java.util.*;
 public class Biblioteca {
 
     //Atributos
-    public String name;
-    public ArrayList<Libro> libros = new ArrayList<>();
+    private String name;
 
+    private ArrayList<Libro> libros = new ArrayList<>();
+    private ArrayList<Usuario> usuarios = new ArrayList<>();
+    private ArrayList<Prestamo> prestamos = new ArrayList<>();
 
-    Random random = new Random();
-    public ArrayList<Usuario> usuarios = new ArrayList<>();
-    public ArrayList<Prestamo> prestamos = new ArrayList<>();
+    //Getters
 
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<Libro> getLibros() {
+        return libros;
+    }
+
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public ArrayList<Prestamo> getPrestamos() {
+        return prestamos;
+    }
+
+    //Setters
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLibros(ArrayList<Libro> libros) {
+        this.libros = libros;
+    }
+
+    public void setPrestamos(ArrayList<Prestamo> prestamos) {
+        this.prestamos = prestamos;
+    }
+
+    public void setUsuarios(ArrayList<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    //Métodos
 
     public void addUser(){
         var usuario = new Usuario();
@@ -35,7 +70,6 @@ public class Biblioteca {
 
         usuarios.add(usuario);
     }
-
 
     public void addBook(){
         var libro = new Libro();
@@ -63,7 +97,6 @@ public class Biblioteca {
 
         System.out.println("\nLibro registrado exitosamente!");
     }
-
 
     public void addPrestamos(){
         Scanner scanner = new Scanner(System.in);
@@ -102,7 +135,6 @@ public class Biblioteca {
         System.out.println("El usuario " + usuarioEncontrado.getName() + " ha realizado un préstamo con el libro: " + libroEncontrado.getTitle() + " el " + prestamo.fecha);
 
     }
-
 
     public void displayUsuarioEncontradoXID(){
         Scanner scanner = new Scanner(System.in);
@@ -277,17 +309,6 @@ public class Biblioteca {
             }
         }
         return null;
-    }
-
-    public void displayHistorial(){
-        for (Prestamo prestamo : prestamos){
-            System.out.println("Usuario: " + prestamo.usuario.getName());
-            System.out.println("Libro: " + prestamo.libro.getTitle());
-            System.out.println("Fecha préstamo: " + prestamo.fecha);
-            String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
-            System.out.println(estado);
-            System.out.println(" ");
-        }
     }
 
 }

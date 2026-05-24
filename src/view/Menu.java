@@ -161,6 +161,7 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 2:
+                    displayPrestamo();
                     biblioteca.devolverLibro();
                     pausar(scanner);
                     break;
@@ -169,7 +170,7 @@ public class Menu {
                     pausar(scanner);
                     break;
                 case 4:
-                    biblioteca.displayHistorial();
+                    displayHistorial();
                     pausar(scanner);
                     break;
                 case 0:
@@ -208,12 +209,12 @@ public class Menu {
 
     public void displayUser(){
 
-        if(biblioteca.usuarios.isEmpty()){
+        if(biblioteca.getUsuarios().isEmpty()){
             System.out.println("\nNo hay ningún Usuario registrado");
             return;
         }
 
-        for (Usuario usuario : biblioteca.usuarios){
+        for (Usuario usuario : biblioteca.getUsuarios()){
             System.out.println("\n-------------------------");
             System.out.println("ID: " + usuario.getUserID());
             System.out.println("Nombre: " + usuario.getName());
@@ -222,12 +223,12 @@ public class Menu {
     }
 
     public void displayBook() {
-        if (biblioteca.libros.isEmpty()) {
+        if (biblioteca.getLibros().isEmpty()) {
             System.out.println("No hay libros registrados en la biblioteca.");
             return;
         }
         System.out.println("--- Lista de Libros ---");
-        for (Libro libro : biblioteca.libros) {
+        for (Libro libro : biblioteca.getLibros()) {
             System.out.println("Título: " + libro.getTitle() +
                     " | Autor: " + libro.getAuthor() +
                     " | ISBN: " + libro.getISBN() +
@@ -239,13 +240,24 @@ public class Menu {
 
         System.out.println("----------------------Lista de Préstamos--------------------");
 
-        for(Prestamo prestamo : biblioteca.prestamos){
+        for(Prestamo prestamo : biblioteca.getPrestamos()){
 
             if (!prestamo.state){
                 System.out.println("\nNo hay Prestamos activos");
                 return;
             }
 
+            System.out.println("Usuario: " + prestamo.usuario.getName());
+            System.out.println("Libro: " + prestamo.libro.getTitle());
+            System.out.println("Fecha préstamo: " + prestamo.fecha);
+            String estado = (prestamo.state) ? "Estado: ACTIVO" : "Estado: INACTIVO";
+            System.out.println(estado);
+            System.out.println(" ");
+        }
+    }
+
+    public void displayHistorial(){
+        for (Prestamo prestamo : biblioteca.getPrestamos()){
             System.out.println("Usuario: " + prestamo.usuario.getName());
             System.out.println("Libro: " + prestamo.libro.getTitle());
             System.out.println("Fecha préstamo: " + prestamo.fecha);
