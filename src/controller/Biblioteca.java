@@ -92,19 +92,9 @@ public class Biblioteca {
         }
 
 
-        long prestamosUsuario = prestamos.stream().filter(prestamo -> prestamo.usuario.equals(usuarioEncontrado) && prestamo.state == true).count();
+        validarCantidadPrestamos(usuarioEncontrado, libroEncontrado);
+        validarPrestamoDuplicado(usuarioEncontrado, libroEncontrado);
 
-        if(prestamosUsuario >= 3){
-            System.out.println("\nUsted ha superado el máximo de prestamos aceptado por la biblioteca");
-            return;
-        }
-
-        long cantidad = prestamos.stream().filter(p -> p.usuario.equals(usuarioEncontrado) && p.libro.equals(libroEncontrado) && p.state).count();
-
-        if(cantidad > 0){
-            System.out.println("\nEl usuario ya tiene este libro prestado.");
-            return;
-        }
 
         libroEncontrado.setStock(libroEncontrado.getStock() - 1);
         Prestamo prestamo = new Prestamo(usuarioEncontrado, libroEncontrado, true, LocalDate.now());
@@ -289,6 +279,24 @@ public class Biblioteca {
             }
         }
         return null;
+    }
+
+    public void validarCantidadPrestamos(Usuario usuarioEncontrado, Libro libroEncontrado){
+        long prestamosUsuario = prestamos.stream().filter(p -> p.usuario.equals(usuarioEncontrado) && p.state).count();
+
+        if (prestamosUsuario > 3){
+            System.out.println("\nUsted ha superado el máximo de prestamos aceptado por la biblioteca");
+            return;
+        }
+    }
+
+    public void validarPrestamoDuplicado(Usuario usuarioEncontrado, Libro libroEncontrado){
+        long cantidadPrestamo = prestamos.stream().filter(p -> p.usuario.equals(usuarioEncontrado) && p.libro.equals(libroEncontrado) && p.state).count();
+
+        if(cantidadPrestamo > 0){
+            System.out.println("\nEl usuario ya tiene este libro prestado.");
+            return;
+        }
     }
 
 }
