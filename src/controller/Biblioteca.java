@@ -3,6 +3,7 @@ package controller;
 import model.Libro;
 import model.Prestamo;
 import model.Usuario;
+import Enum.ResultadoPrestamo;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -75,34 +76,34 @@ public class Biblioteca {
         libros.add(libro);
     }
 
-    public void addPrestamo(int id, int ISBN){
+    public ResultadoPrestamo addPrestamo(int id, int ISBN){
 
         var usuarioEncontrado = buscarUsuario(id);
         var libroEncontrado = buscarLibro(ISBN);
 
         if(usuarioEncontrado == null || libroEncontrado == null){
-            System.out.println("\nUsuario o libro inválido");
-            return;
+            return ResultadoPrestamo.USUARIO_O_LIBRO_INVALIDO;
         }
 
         if(libroEncontrado.getStock() == 0){
-            System.out.println("\nLibro no disponible para prestar!");
-            System.out.println("\n| Stock: " + libroEncontrado.getStock());
-            return;
+            return ResultadoPrestamo.SIN_STOCK;
         }
 
 
-        validarCantidadPrestamos(usuarioEncontrado, libroEncontrado);
-        validarPrestamoDuplicado(usuarioEncontrado, libroEncontrado);
+        if(!esCantidadValida(usuarioEncontrado)){
+            return ResultadoPrestamo.LIMITE_ALCANZADO;
+        }
+
+        if(!esPrestamoUnico(usuarioEncontrado, libroEncontrado)){
+            return ResultadoPrestamo.YA_TIENE_ESE_LIBRO;
+        }
 
 
         libroEncontrado.setStock(libroEncontrado.getStock() - 1);
         Prestamo prestamo = new Prestamo(usuarioEncontrado, libroEncontrado, true, LocalDate.now());
         prestamos.add(prestamo);
 
-
-        System.out.println("\n---------------------Préstamo Creado--------------------------");
-        System.out.println("El usuario " + usuarioEncontrado.getName() + " ha realizado un préstamo con el libro: " + libroEncontrado.getTitle() + " el " + prestamo.fecha);
+        return ResultadoPrestamo.EXITO;
 
     }
 
@@ -281,22 +282,14 @@ public class Biblioteca {
         return null;
     }
 
-    public void validarCantidadPrestamos(Usuario usuarioEncontrado, Libro libroEncontrado){
-        long prestamosUsuario = prestamos.stream().filter(p -> p.usuario.equals(usuarioEncontrado) && p.state).count();
-
-        if (prestamosUsuario > 3){
-            System.out.println("\nUsted ha superado el máximo de prestamos aceptado por la biblioteca");
-            return;
-        }
+    public boolean esCantidadValida(Usuario usuarioEncontrado){
+        long activos = prestamos.stream().filter(p -> p.usuario.equals(usuarioEncontrado) && p.state).count();
+        return activos < 3;
     }
 
-    public void validarPrestamoDuplicado(Usuario usuarioEncontrado, Libro libroEncontrado){
-        long cantidadPrestamo = prestamos.stream().filter(p -> p.usuario.equals(usuarioEncontrado) && p.libro.equals(libroEncontrado) && p.state).count();
-
-        if(cantidadPrestamo > 0){
-            System.out.println("\nEl usuario ya tiene este libro prestado.");
-            return;
-        }
+    private boolean esPrestamoUnico(Usuario usuario, Libro libro) {
+        return prestamos.stream()
+                .noneMatch(p -> p.usuario.equals(usuario) && p.libro.equals(libro) && p.state);
     }
 
 }

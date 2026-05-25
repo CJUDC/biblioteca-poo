@@ -4,6 +4,7 @@ import controller.Biblioteca;
 import model.Libro;
 import model.Prestamo;
 import model.Usuario;
+import Enum.ResultadoPrestamo;
 
 import java.sql.SQLOutput;
 import java.util.Scanner;
@@ -162,7 +163,7 @@ public class Menu {
                 case 1:
                     int userID = leerEntero("\nIngrese el id del usuario: ");
                     int ISBN = leerEntero("Ingrese el ISBN del libro a prestar: ");
-                    biblioteca.addPrestamo(userID, ISBN);
+                    opcionPrestarLibro(userID, ISBN);
                     pausar(scanner);
                     break;
                 case 2:
@@ -287,6 +288,30 @@ public class Menu {
             } catch(Exception e){
                 System.out.println("⚠ Por favor ingrese un número válido.");
             }
+        }
+    }
+
+    public void opcionPrestarLibro(int id, int ISBN) {
+
+
+        ResultadoPrestamo resultado = biblioteca.addPrestamo(id, ISBN);
+
+        switch (resultado) {
+            case EXITO:
+                System.out.println("\n¡Préstamo creado exitosamente!");
+                break;
+            case USUARIO_O_LIBRO_INVALIDO:
+                System.out.println("\nUsuario o libro inválido.");
+                break;
+            case SIN_STOCK:
+                System.out.println("\nLibro no disponible para prestar.");
+                break;
+            case LIMITE_ALCANZADO:
+                System.out.println("\nHa superado el máximo de préstamos (3).");
+                break;
+            case YA_TIENE_ESE_LIBRO:
+                System.out.println("\nEl usuario ya tiene este libro prestado.");
+                break;
         }
     }
 }
